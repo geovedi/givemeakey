@@ -1,21 +1,30 @@
 Give Me A Key
 =============
 
-Simple and strong password generator so you don't have to use the same password for multiple websites.
-
+Simple and strong password generator so you don't have to use the same password for multiple websites, servers or applications.
 
 How to use this thing?
 ----------------------
-Choose a master password and then use this script to generate sub-passwords for different sites.
+So easy, even your mother can use it! Choose a master password and then use this script to generate sub-passwords for different sites. Generated sub-password will be **copied to the Clipboard**.
 
 	$ python givemeakey.py 
-	Web: gmail.com
+	URI: https://www.gmail.com
 	User: jim.geovedi@gmail.com
 	Master password: [HIDDEN]
 
-Generated sub-password will be **copied to the Clipboard**. So easy, even your mother can use it!
+	$ python givemeakey.py 
+	URI: https://www.paypal.com
+	User: jim@geovedi.com
+	Master password: [HIDDEN]
 
-Note: OSX only... ;-)
+	$ python givemeakey.py
+	URI: ssh://10.0.0.6
+	User: jim
+	Master password: [HIDDEN]
+
+Notes: 
+* OSX only... please don't wait for Win32 support ;-)
+* **Change master password regularly** to increase security.
 
 License
 -------

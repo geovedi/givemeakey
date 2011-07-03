@@ -749,7 +749,7 @@ def pbcopy(data):
     return retcode
 
 def main():
-    web = raw_input("Web: ")
+    web = raw_input("URI: ")
     user = raw_input("User: ")
     secret = getpass("Master password: ")
     password = _GiveMeAKey(web, user, secret).generate()
