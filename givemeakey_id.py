@@ -1,17 +1,28 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-import sys
-
+import subprocess
 from hashlib import md5
 from getpass import getpass
 
 GARBAGE = "bilik!PATUH7lamur3Kelek%kabarKLAIM%!papakPaser5173&#"
 
+
 class _GiveMeAKey(object):
-    
+
     def __init__(self, uri="", user="", secret=""):
-        if uri: self.uri = uri
-        if user: self.user = user
-        if secret: self.secret = secret
+        if uri:
+            self.uri = uri
+        else:
+            self.uri = ""
+        if user:
+            self.user = user
+        else:
+            self.user = ""
+        if secret:
+            self.secret = secret
+        else:
+            self.secret = ""
         self.wordset = [
             'abadi', 'abang', 'abjad', 'abrik', 'absah', 'absen', 'abses',
             'acara', 'acuan', 'adres', 'aduan', 'afair', 'afdal', 'afiat',
@@ -407,13 +418,13 @@ class _GiveMeAKey(object):
             'zebra', 'zenit', 'zikir', 'zirah', 'zuhur']
         self.punctset = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"]
         self.numset = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-    
+
     def generate(self):
         value = md5(self.uri + self.user + self.secret + GARBAGE).hexdigest()
         hash = []
         num = 0
-        for i in range(len(value) / 4):
-            hash.append(value[num : num + 4])
+        for i in range(len(value)/4):
+            hash.append(value[num:num+4])
             num += 4
         words = []
         for x in [hash[0], hash[2], hash[4], hash[6]]:
@@ -424,20 +435,20 @@ class _GiveMeAKey(object):
         numbers = []
         for z in [hash[1], hash[3], hash[5], hash[7]]:
             numbers.append(self.numset[(sum([ord(i) for i in z]) * 408) % 10])
-        return "%s%s%s%s%s%s%s%s%s%s%s%s" % (words[0], words[1].upper(), 
-            puncts[0], puncts[1], words[2], words[3].title(), numbers[0], 
+        return "%s%s%s%s%s%s%s%s%s%s%s%s" % (words[0], words[1].upper(),
+            puncts[0], puncts[1], words[2], words[3].title(), numbers[0],
             numbers[1], numbers[2], numbers[3], puncts[2], puncts[3])
-    
 
-# OSX only.. calling pbcopy(1), provide copying to the Clipboard
-# http://www.devx.com/opensource/Article/37233/0/page/3
-import subprocess
+
 def pbcopy(data):
+    # OSX only.. calling pbcopy(1), provide copying to the Clipboard
+    # http://www.devx.com/opensource/Article/37233/0/page/3
     p = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
     p.stdin.write(data)
     p.stdin.close()
     retcode = p.wait()
     return retcode
+
 
 def main():
     uri = raw_input("URI: ")
@@ -446,6 +457,7 @@ def main():
     password = _GiveMeAKey(uri, user, secret).generate()
     #print "Password:", password
     pbcopy(password)
+
 
 if __name__ == "__main__":
     main()
