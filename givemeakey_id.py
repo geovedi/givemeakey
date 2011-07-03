@@ -8,8 +8,8 @@ GARBAGE = "bilik!PATUH7lamur3Kelek%kabarKLAIM%!papakPaser5173&#"
 
 class _GiveMeAKey(object):
     
-    def __init__(self, web="", user="", secret=""):
-        if web: self.web = web
+    def __init__(self, uri="", user="", secret=""):
+        if uri: self.uri = uri
         if user: self.user = user
         if secret: self.secret = secret
         self.wordset = [
@@ -409,7 +409,7 @@ class _GiveMeAKey(object):
         self.numset = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     
     def generate(self):
-        value = md5(self.web + self.user + self.secret + GARBAGE).hexdigest()
+        value = md5(self.uri + self.user + self.secret + GARBAGE).hexdigest()
         hash = []
         num = 0
         for i in range(len(value) / 4):
@@ -440,10 +440,10 @@ def pbcopy(data):
     return retcode
 
 def main():
-    web = raw_input("URI: ")
+    uri = raw_input("URI: ")
     user = raw_input("User: ")
     secret = getpass("Master password: ")
-    password = _GiveMeAKey(web, user, secret).generate()
+    password = _GiveMeAKey(uri, user, secret).generate()
     #print "Password:", password
     pbcopy(password)
 
