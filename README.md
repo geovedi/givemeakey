@@ -23,6 +23,7 @@ So easy, even your mother can use it! Choose a master password and then use this
 	Master password: [HIDDEN]
 
 Notes: 
+
 * OSX only... please don't wait for Win32 support ;-)
 * **Change master password regularly** to increase security.
 
