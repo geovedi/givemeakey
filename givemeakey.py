@@ -10,7 +10,7 @@ GARBAGE = "matipoTINCT&#axmanBeant7335#%bilgyEMIT(&sailedJoug9735#%"
 
 class _GiveMeAKey(object):
 
-    def __init__(self, uri="", user="", secret=""):
+    def __init__(self, uri, user, secret):
         if uri:
             self.uri = uri
         else:

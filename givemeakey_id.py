@@ -10,7 +10,7 @@ GARBAGE = "bilik!PATUH7lamur3Kelek%kabarKLAIM%!papakPaser5173&#"
 
 class _GiveMeAKey(object):
 
-    def __init__(self, uri="", user="", secret=""):
+    def __init__(self, uri, user, secret):
         if uri:
             self.uri = uri
         else:
